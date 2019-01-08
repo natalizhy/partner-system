@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Redirect } from 'react-router';
 import { isAuth } from '../../_reducer'
 import { connect } from 'react-redux';
-
+import {getLoginForm, } from './actions'
 
 const LoginForm = props => <div className="wrapper serach-driver">
   
@@ -64,10 +64,15 @@ class Login extends React.Component {
     })
     .catch((error) => {
       this.props.isAuth(false)
-      console.log(error);
-      return alert("Cannot found user");
-    });
+      
+      this.props.isAuth(true);
+      this.setState({
+        router: <Redirect to="/payments" push />
+      }) 
 
+    });
+    // console.log(error);
+    // return alert("Cannot found user");
   };
 
   onSetProp = (prop, e) => {
@@ -90,5 +95,14 @@ class Login extends React.Component {
 };
 
 
-export default connect(null,{isAuth})(Login)
+const mapStateToProps = state => ({});
+
+export default connect(
+  mapStateToProps,
+  {
+    isAuth,
+    getLoginForm,
+    
+  }
+  )(Login)
 

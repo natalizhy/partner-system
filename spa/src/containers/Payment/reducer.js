@@ -81,3 +81,21 @@ export const getDriver = (id) => (dispatch) => {
     alert("Водитель не найден");
   });
 };
+
+
+// export const getUser = (id) => (dispatch) => {
+//   dispatch(toggleLoading(true, 'Авторизация...'));
+
+//   return PaymentsApi.GetUserByLogin(id).then(({data}) => {
+//     if (data.status === 'ok') {
+//       loadStatements()(dispatch).then(response => {
+//         if (data.status === 'ok') {
+
+//            history.push(`/payments`);
+//         }
+
+//         dispatch(toggleLoading(false));
+//       }).catch(err => dispatch(toggleLoading(false)));
+//     }
+//   })
+// };
